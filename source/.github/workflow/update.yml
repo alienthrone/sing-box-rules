@@ -40,7 +40,7 @@ jobs:
             https://cdn.jsdelivr.net/gh/razaxq/dns-blocklists-sing-box@rule-set/hagezi-pro.srs
 
       - name: Compile my own rules
-        run: sing-box rule-set compile source/my-blocks.json -o rules/my-blocks.srs
+        run: sing-box rule-set compile source/alien-blocks.json -o rules/alien-blocks.srs
 
       - name: Commit changes
         run: |
