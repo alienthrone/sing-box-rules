@@ -1,0 +1,109 @@
+{
+  "log": {
+    "level": "info"
+  },
+  "http_clients": [
+    {
+      "tag": "default"
+    }
+  ],
+  "dns": {
+    "servers": [
+      {
+        "type": "https",
+        "tag": "dns",
+        "server": "9.9.9.9"
+      }
+    ],
+    "rules": [
+      {
+        "rule_set": [
+          "ads",
+          "hagezi",
+          "adult",
+          "alien-block"
+        ],
+        "action": "reject"
+      }
+    ]
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "address": [
+        "172.19.0.1/30",
+        "fdfe:dcba:9876::1/126"
+      ],
+      "auto_route": true,
+      "strict_route": true
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "direct",
+      "tag": "direct"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "action": "sniff"
+      },
+      {
+        "protocol": "dns",
+        "action": "hijack-dns"
+      },
+      {
+        "protocol": "bittorrent",
+        "action": "reject"
+      },
+      {
+        "rule_set": [
+          "ads",
+          "hagezi",
+          "adult",
+          "alien-block"
+        ],
+        "action": "reject"
+      }
+    ],
+    "rule_set": [
+      {
+        "type": "remote",
+        "tag": "ads",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/alienthrone/sing-box-rules/main/rules/ads.srs",
+        "update_interval": "1d"
+      },
+      {
+        "type": "remote",
+        "tag": "hagezi",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/alienthrone/sing-box-rules/main/rules/hagezi.srs",
+        "update_interval": "1d"
+      },
+      {
+        "type": "remote",
+        "tag": "adult",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/alienthrone/sing-box-rules/main/rules/adult.srs",
+        "update_interval": "1d"
+      },
+      {
+        "type": "remote",
+        "tag": "alien-block",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/alienthrone/sing-box-rules/main/rules/alien-block.srs",
+        "update_interval": "1d"
+      }
+    ],
+    "final": "direct",
+    "auto_detect_interface": true,
+    "default_domain_resolver": "dns"
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true
+    }
+  }
+}
