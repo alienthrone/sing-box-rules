@@ -1,0 +1,19 @@
+{
+  "version": 3,
+  "rules": [
+    {
+      "domain_suffix": [
+        ".top",
+        ".click",
+        "weather-analytics-events.apple.com",
+        "notes-analytics-events.apple.com",
+        "books-analytics-events.apple.com",
+        "snap.licdn.com",
+        "ads.linkedin.com"
+      ]
+    },
+    {
+      "domain_keyword": ["browser-intake", "googlesyndication", "doubleclick"]
+    }
+  ]
+}
