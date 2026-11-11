@@ -1,0 +1,52 @@
+name: Update rule sets
+
+on:
+  schedule:
+    - cron: "0 3 * * *"   # 03:00 UTC = 04:00 Germany in winter (05:00 in summer)
+  workflow_dispatch:       # adds a "Run workflow" button
+  push:
+    paths:
+      - "source/**"
+      - ".github/workflows/update.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install sing-box
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download --repo SagerNet/sing-box \
+            --pattern 'sing-box-*-linux-amd64.tar.gz' -O sb.tgz
+          tar xzf sb.tgz --strip-components=1 --wildcards '*/sing-box'
+          sudo mv sing-box /usr/local/bin/
+          sing-box version
+
+      - name: Download upstream lists
+        run: |
+          mkdir -p rules
+          curl -fsSL -o rules/ads.srs \
+            https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-category-ads-all.srs
+          curl -fsSL -o rules/adult.srs \
+            https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-category-porn.srs
+          curl -fsSL -o rules/hagezi.srs \
+            https://cdn.jsdelivr.net/gh/razaxq/dns-blocklists-sing-box@rule-set/hagezi-pro.srs
+
+      - name: Compile my own rules
+        run: sing-box rule-set compile source/my-blocks.json -o rules/my-blocks.srs
+
+      - name: Commit changes
+        run: |
+          git config user.name  "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add rules
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "Update rule sets $(date -u +%F)"
+          git push
