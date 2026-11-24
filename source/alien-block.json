@@ -9,11 +9,49 @@
         "notes-analytics-events.apple.com",
         "books-analytics-events.apple.com",
         "snap.licdn.com",
-        "ads.linkedin.com"
+        "ads.linkedin.com",
+
+        "sift.com",
+        "siftscience.com",
+        "hexagon-cdn.com",
+        "hexagon-analytics.com",
+
+        ".xxx",
+        ".porn",
+        ".sex",
+        ".adult",
+        "phncdn.com",
+        "xhcdn.com",
+        "rdtcdn.com",
+        "ypncdn.com",
+        "t8cdn.com",
+        "tube8.com",
+        "eporner.com",
+        "motherless.com",
+        "livejasmin.com",
+        "bongacams.com"
       ]
     },
     {
-      "domain_keyword": ["browser-intake", "googlesyndication", "doubleclick"]
+      "domain_keyword": [
+        "browser-intake",
+        "googlesyndication",
+        "doubleclick",
+
+        "porn",
+        "sex",
+        "xxx",
+        "xvideos",
+        "xnxx",
+        "xhamster",
+        "redtube",
+        "spankbang",
+        "brazzers",
+        "chaturbate",
+        "stripchat",
+        "onlyfans",
+        "hentai"
+      ]
     }
   ]
 }
