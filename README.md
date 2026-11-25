@@ -102,3 +102,37 @@ You don't need to download these yourself. They're listed here for reference.
 - **Internet very slow or not working at all?** Stop and restart sing-box. If that
   doesn't help, restart the device.
 - **During system updates:** see the warning at the top. Pause sing-box first.
+
+*******************************************
+************** W A R N I N G **************
+*******************************************
+
+other trackers which might be blocked in the future:
+Status: TOI (Tracker Of Interest) -> TOC (Tracker Of Concern) -> TCR ( Tracker Critical Risk)
+
+  - online-metrix.net     TOC  
+  - threatmetrix.com      TOC
+  - iesnare.com           TOI
+  - iovation.com          TOI
+
+
+what do they do:
+
+These do the same job as Sift (device fingerprint plus risk score), but mainly for banks, card payments and big shops. That's why blocking them can break your logins and payments.
+
+ThreatMetrix (owned by LexisNexis Risk Solutions, online-metrix.net)
+
+What it does: When you log in to a bank or pay online, a hidden script builds a fingerprint of your device (browser, OS, screen, fonts, network data) and compares it with a huge shared network of devices. The bank gets back a score like "known device, low risk" or "new device, suspicious".
+Who uses it: Its customer hostnames include h-afterpay, h-citicards, h-ebay, h-hsbcmx, h-lloydsbank, and others. 
+netify
+Why it's controversial: It was found to scan local ports on your computer. Safer-Networking describes it as a port scanner used by some shop websites without user consent. 
+safer-networking
+
+iovation (iesnare.com, iovation.com)
+
+What it does: iovation device reputation protects online businesses from fraud and abuse by exposing computers and mobile devices associated with chargebacks, identity theft and other abuses. Now known as TransUnion TruValidate. 
+builtwith
+In practice: If any customer of theirs ever flagged your device (rightly or wrongly), other sites can see that reputation too.
+Who uses it: banks, lenders, online casinos and gaming sites.
+
+What happens if you block Group 2: the bank or payment provider gets no device signal, so you may get extra verification steps, failed 3-D Secure, declined payments or a locked login.
