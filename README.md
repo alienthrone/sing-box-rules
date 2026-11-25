@@ -60,7 +60,6 @@ Both versions block ads, trackers and adult websites. The only difference:
 
 | Version | adult content | Link |
 |---|---|---|
-| **Standard (v18)** | not blocked | [sing-box-v18.json](https://raw.githubusercontent.com/alienthrone/sing-box-rules/main/config/sing-box-v18.json) |
 | **Strict (v18 strict)** | blocked | [sing-box-v18-strict.json](https://raw.githubusercontent.com/alienthrone/sing-box-rules/main/config/sing-box-v18-strict.json) |
 
 👉 **Recommended for children's devices: Strict.**
